@@ -4,8 +4,14 @@ jobs:
   hello:
     runs-on: windows-latest
     steps:
-      - run: |
-          write-host "hello "
-          write-host "welcome to my ci pipeline"
-      - run: java -version && mvn -version
-      
+
+      - uses: actions/checkout@v4
+      - name: Display Directory
+        run: dir
+      - name: Display Java and Maven Versions
+        run: java -version && mvn -version
+      - name: Run Maven Verify
+        run: mvn -B verify
+      - name: base test print
+        run: |
+          write-host "running basic tests to observe what i can actually do"
