@@ -1,0 +1,11 @@
+name: Learn ci
+on: [push,workflow_dispatch]
+jobs:
+  hello:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          write-host "hello "
+          write-host "welcome to my ci pipeline"
+      - run: java -version && mvn version
+      
