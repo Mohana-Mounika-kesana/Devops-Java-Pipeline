@@ -11,6 +11,19 @@ permissions:
   contents: read
 
 jobs:
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Scan for leaked secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   load-versions:
     runs-on: ubuntu-latest
     outputs:
@@ -34,7 +47,7 @@ jobs:
           cat "$RUNNER_TEMP/versions.clean"
 
   build-and-test:
-    needs: load-versions
+    needs: [secret-scan, load-versions]
     runs-on: ubuntu-latest
     strategy:
       matrix:

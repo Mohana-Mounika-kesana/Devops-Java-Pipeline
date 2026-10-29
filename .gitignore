@@ -3,3 +3,15 @@ target/
 .idea/
 *.iml
 .vscode/
+
+# Secrets - never commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+*.pfx
+secrets/
+credentials.json

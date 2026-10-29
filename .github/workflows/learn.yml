@@ -1,11 +1,15 @@
 name: Learn ci
+run-name: Learn ci - ${{ github.event_name }} by ${{ github.actor }}
+
 on: [push,workflow_dispatch]
 jobs:
   hello:
+    name: Build and Test on Windows
     runs-on: windows-latest
     steps:
 
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Display Directory
         run: dir
       - name: Display Java and Maven Versions
@@ -15,3 +19,12 @@ jobs:
       - name: base test print
         run: |
           write-host "running basic tests to observe what i can actually do"
+
+      - name: Use a secret safely
+        env:
+          DEMO_API_KEY: ${{ secrets.DEMO_API_KEY }}
+        run: |
+          if (-not $env:DEMO_API_KEY) { Write-Host "DEMO_API_KEY secret is not set"; exit 1 }
+          Write-Host "Secret length: $($env:DEMO_API_KEY.Length)"
+          # GitHub masks secret values in logs, this prints ***
+          Write-Host "Secret value: $env:DEMO_API_KEY"
