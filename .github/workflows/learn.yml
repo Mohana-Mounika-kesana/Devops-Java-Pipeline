@@ -7,5 +7,5 @@ jobs:
       - run: |
           write-host "hello "
           write-host "welcome to my ci pipeline"
-      - run: java -version && mvn version
+      - run: java -version && mvn -version
       
