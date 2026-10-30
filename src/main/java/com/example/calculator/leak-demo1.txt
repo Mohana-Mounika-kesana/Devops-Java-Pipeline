@@ -1,2 +1,2 @@
 hello all 
-TOKEN=ghp_123456789abcdef
+Token=ghp_123456789abcdef
