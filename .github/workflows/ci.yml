@@ -23,6 +23,7 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DB_PASSWORD: ghp_abcdefghijklmnopqrstuvwxyz123456
 
   load-versions:
     runs-on: ubuntu-latest
