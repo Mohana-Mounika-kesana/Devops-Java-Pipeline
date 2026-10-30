@@ -23,6 +23,8 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          SECRET: abcd123
 
   load-versions:
     runs-on: ubuntu-latest
