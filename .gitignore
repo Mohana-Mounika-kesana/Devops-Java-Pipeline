@@ -5,7 +5,7 @@ target/
 .vscode/
 
 # Secrets - never commit these
-.env
+
 .env.example
 .env.*
 !.env.example
